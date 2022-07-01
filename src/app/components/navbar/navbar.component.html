@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img
+      src="https://png.pngitem.com/pimgs/s/364-3643194_transparent-dominos-pizza-logo-hd-png-download.png"
+      width="30"
+      height="30"
+      alt=""
+    />
+  </a>
+  <a class="navbar-brand">Dominos</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/"
+          >Home <span class="sr-only"></span
+        ></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/offers">Offers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="help">Help</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          More
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/beverages">Beverages</a>
+          <a class="dropdown-item" routerLink="/pizza">Pizza</a>
+          <a class="dropdown-item" routerLink="/snacks">Snacks</a>
+          <a class="dropdown-item" routerLink="/burger">Burger</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- <div>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+  </div> -->
+  <ul class="d-flex">
+    <li class="nav-item" *ngIf="isLoggedIn && !isAdmin">
+      <a class="nav-link active" aria-current="page" routerLink="/cart">Cart<span class="badge bg-danger" *ngIf="count>0" >{{count}}</span></a>
+    </li>
+    <li class="nav-item" *ngIf="isAdmin" >
+      <a class="nav-link active" aria-current="page" routerLink="/add-dish" >Add Dish</a>
+    </li>
+    <li class="nav-item"  *ngIf="!isLoggedIn">
+        <a class="nav-link active" aria-current="page" routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn" >
+        <a class="nav-link active" aria-current="page"  routerLink="/orders">Orders</a>
+      </li>  
+    <li class="nav-item" *ngIf="isLoggedIn" >
+      <a class="nav-link active" aria-current="page" (click)="logout()" routerLink=" ">Logout</a>
+    </li>
+  </ul>
+</nav>

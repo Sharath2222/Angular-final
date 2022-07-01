@@ -1,0 +1,100 @@
+<app-navbar></app-navbar>
+<div class="container">
+
+
+  <form
+    name="adddish"
+    (ngSubmit)="!dishForm.invalid && addDish()"
+    #dishForm="ngForm"
+  >
+    <div class="mb-3">
+       <div>
+        <small class="text-danger" *ngIf="!image.valid">Image is required</small>
+       </div> 
+      <label class="form-label">Image Url</label>
+      
+      <input
+        type="text"
+        class="form-control"
+        name="imageurl"
+        [(ngModel)]="dish.img"
+        #image="ngModel"
+        required
+      />
+    </div>
+    <div class="mb-3">
+       <div>
+        <small class="text-danger" *ngIf="!name.valid">Name is required</small>
+       </div>
+      <label class="form-label">Name of the dish</label>
+      
+      <input
+        type="text"
+        class="form-control"
+        name="name1"
+        [(ngModel)]="dish.name"
+        #name="ngModel"
+        required
+      />
+    </div>
+    <div class="mb-3">
+        <div>
+            <small class="text-danger" *ngIf="!price.valid">Price is required</small>
+        </div>
+      <label class="form-label">Price</label>
+      
+      <input
+        type="number"
+        class="form-control"
+        name="price"
+        [(ngModel)]="dish.price"
+        #price="ngModel"
+        required
+        min="99"
+        max="9999"
+      />
+    </div>
+    <div class="mb-3">
+        <div>
+            <small class="text-danger" *ngIf="!description.valid">description is required</small>
+        </div>
+        
+        
+      <label class="form-label">Description</label>
+      
+      <input
+        type="text"
+        class="form-control"
+        name="description"
+        [(ngModel)]="dish.description"
+        #description="ngModel"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <!-- <input type="text" class="form-control" name="category" placeholder="Another input"> -->
+      <select
+        name="category"
+        id=""
+        class="form-control"
+        [(ngModel)]="dish.category"
+        #category="ngModel"
+      >
+        <option value="pizza" selected>Pizza</option>
+        <option value="beverages">Beverages</option>
+        <option value="snacks">Snack</option>
+        <option value="burger">Burger</option>
+      </select>
+    </div>
+    <div class="d-grid gap-2">
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!dishForm.valid"
+      >
+        Add Dish
+      </button>
+    </div>
+  </form>
+</div>
